@@ -1,15 +1,18 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import API from "../services/candidateService";
+import AuthContext from "./AuthContext";
 
-export const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(localStorage.getItem("token"));
+export default function AuthProvider({ children }) {
+  const [user, setUser] = useState(() =>
+    localStorage.getItem("token")
+  );
 
   const login = async (email, password) => {
     const res = await API.post("/auth/login", { email, password });
-    localStorage.setItem("token", res.data.token);
-    setUser(res.data.token);
+    const token = res.data.token;
+
+    localStorage.setItem("token", token);
+    setUser(token);
   };
 
   const register = async (name, email, password) => {
@@ -26,4 +29,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
