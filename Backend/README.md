@@ -124,33 +124,16 @@ Create a `.env` file inside backend folder:
 
 
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/candidate_referral
+MONGO_URI=mongodb://127.0.0.1:27017/myDataBase_Name
 JWT_SECRET=supersecretkey
+(to generate :  openssl rand -base64 32)
 
 
 ⚠️ Never commit `.env` file to GitHub.
 
 ---
 
-## ⚙️ Installation & Setup
-
-### 1️⃣ Navigate to backend directory
-
-
-
-cd backend
-
-
-### 2️⃣ Install dependencies
-
-
-
-npm install
-
-
-### 3️⃣ Start development server
-
-
+### Start development server
 
 npm run dev
 
@@ -187,8 +170,6 @@ http://localhost:5000
 ## 🔒 Protected Routes
 
 These routes require JWT token in header:
-
-
 
 Authorization: Bearer <token>
 
