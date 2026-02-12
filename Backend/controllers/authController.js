@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+// register a new user
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -20,6 +21,8 @@ export const register = async (req, res) => {
 
   res.json({ message: "User registered successfully" });
 };
+
+// login a user and return a JWT token
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
